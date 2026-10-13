@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Muti!</title>
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #2b1055, #7597de, #b83280, #f67280);
+      --card-bg: rgba(255, 255, 255, 0.15);
+      --card-border: rgba(255, 255, 255, 0.3);
+      --text-color: #ffffff;
+      --btn-bg: linear-gradient(45deg, #ff416c, #ff4b2b);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', cursive, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg-gradient);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 450px;
+      min-height: 550px;
+      background: var(--card-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--card-border);
+      border-radius: 25px;
+      padding: 25px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .step {
+      display: none;
+      width: 100%;
+      animation: fadeIn 0.8s ease-in-out forwards;
+    }
+
+    .step.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Style Tombol */
+    .btn {
+      margin-top: 20px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 50px;
+      background: var(--btn-bg);
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 75, 43, 0.6);
+    }
+
+    /* Music Player Widget di Pojok */
+    .music-widget {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      z-index: 10;
+    }
+
+    /* Step 1: Balon Udara & Roket */
+    .adventure-icon-container {
+      font-size: 70px;
+      margin: 30px 0 10px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      animation: floatAdventure 3s ease-in-out infinite;
+    }
+
+    @keyframes floatAdventure {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* Step 3: Surat Pesan */
+    .letter-card {
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: left;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      max-height: 350px;
+      overflow-y: auto;
+    }
+    .letter-card h3 { color: #ff4757; margin-bottom: 10px; font-size: 1rem; }
+    .letter-card p { font-size: 0.9rem; line-height: 1.4; margin-bottom: 8px; }
+
+    /* Kalender Oktober Style */
+    .calendar-card {
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 15px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 300px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .calendar-header {
+      font-weight: bold;
+      color: #ff4757;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      font-size: 0.85rem;
+    }
+    .day-name {
+      font-weight: bold;
+      color: #777;
+    }
+    .day {
+      padding: 6px 0;
+      border-radius: 5px;
+    }
+    .day.birthday {
+      background: #ff4757;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(255, 71, 87, 0.5);
+    }
+
+    /* Step 5: Make a Wish */
+    .cake {
+      font-size: 80px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .cake:hover { transform: scale(1.1); }
+
+    /* Step 6 & 7: Hadiah */
+    .gift-box {
+      font-size: 70px;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .gift-reveal {
+      display: none;
+      margin-top: 15px;
+      background: rgba(255,255,255,0.2);
+      padding: 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Monokrom Tulus disematkan langsung dari file input -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="monokrom.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="container">
+    
+    <!-- Tombol Musik di Pojok -->
+    <div class="music-widget" onclick="toggleMusic()">
+      🎵 <span id="music-status">Play Musik</span>
+    </div>
+
+    <!-- STEP 1: Balon Udara & Roket -->
+    <div class="step active" id="step1">
+      <p style="font-size: 0.9rem; opacity: 0.9;">A new adventure is ready to begin...</p>
+      <div class="adventure-icon-container">
+        <span>🎈</span>
+        <span>🚀</span>
+      </div>
+      <h2 style="margin-top: 10px;">It's Time!</h2>
+      <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 5px;">Someone has been waiting for this moment...</p>
+      <button class="btn" onclick="startSurprise()">Tap to Begin Your Surprise</button>
+    </div>
+
+    <!-- STEP 2: Ucapan Utama -->
+    <div class="step" id="step2">
+      <p style="font-style: italic;">To the most special person...</p>
+      <h1 style="font-size: 2.2rem; margin: 15px 0; color: #ff78ae;">Happy Birthday,<br>Muti 🎂</h1>
+      <button class="btn" onclick="nextStep(3)">Continue ➔</button>
+    </div>
+
+    <!-- STEP 3: Pesan & Nuansa Lagu Monokrom -->
+    <div class="step" id="step3">
+      <div class="letter-card">
+        <h3>🎵 Soundtrack: Tulus - Monokrom</h3>
+        <p><strong>Selamat ulang tahun, Kak Muti!</strong></p>
+        <p style="margin-top: 6px;">Semoga di umur yang baru ini, banyak hal baik datang menghampirimu. Semoga lancar kuliahnya, dimudahkan semua urusannya, dan selalu tersenyum.</p>
+        <hr style="margin: 10px 0; border: 0.5px solid #ddd;">
+        <p style="font-style: italic; font-size: 0.8rem; color: #555;">
+          "Lembaran foto hitam-putih...<br>
+          Kukirimkan terima kasih, untuk warna dalam hidupku dan banyak kenangan indah..."
+        </p>
+        <p style="margin-top: 6px; font-size: 0.85rem;">Terima kasih sudah jadi teman yang luar biasa!</p>
+      </div>
+      <button class="btn" onclick="nextStep(4)">Continue ➔</button>
+    </div>
+
+    <!-- STEP 4: Kalender Spesial Oktober -->
+    <div class="step" id="step4">
+      <div class="calendar-card">
+        <div class="calendar-header">📅 Oktober - Hari Spesialmu</div>
+        <div class="calendar-grid">
+          <div class="day-name">Min</div>
+          <div class="day-name">Sen</div>
+          <div class="day-name">Sel</div>
+          <div class="day-name">Rab</div>
+          <div class="day-name">Kam</div>
+          <div class="day-name">Jum</div>
+          <div class="day-name">Sab</div>
+          
+          <div class="day"></div><div class="day"></div><div class="day"></div><div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div>
+          <div class="day">5</div><div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div>
+          <div class="day">12</div><div class="day">13</div><div class="day birthday" title="Ulang Tahun Muti!">14 🎂</div><div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div>
+          <div class="day">19</div><div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div>
+          <div class="day">26</div><div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day
